@@ -47,6 +47,13 @@
                             </object>
                         </object>
                     </object>
+                    <object key="options" dataType="amazon_payment_config">
+                        <object key="fields" dataType="amazon_payment_config">
+                            <object key="spc_enabled" dataType="spc_enabled">
+                                <field key="value">string</field>
+                            </object>
+                        </object>
+                    </object>
                 </object>
             </object>
         </object>

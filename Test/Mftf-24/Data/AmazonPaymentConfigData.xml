@@ -92,6 +92,12 @@
         <data key="immediate">synchronous</data>
         <data key="automatic">synchronous_possible</data>
     </entity>
+    <entity name="SampleAmazonPaymentSpcEnabled" type="spc_enabled">
+        <data key="value">1</data>
+    </entity>
+    <entity name="SampleAmazonPaymentSpcDisabled" type="spc_enabled">
+        <data key="value">0</data>
+    </entity>
 
     <entity name="EUAmazonPaymentConfig" type="amazon_payment_config">
         <requiredEntity type="api_version">SampleAmazonPaymentApiVersion</requiredEntity>
@@ -135,5 +141,18 @@
         <requiredEntity type="payment_region">SampleAmazonPaymentPaymentRegion</requiredEntity>
         <requiredEntity type="sandbox">SampleAmazonPaymentSandbox</requiredEntity>
         <requiredEntity type="lwa_enabled">SampleAmazonPaymentLwaEnabled</requiredEntity>
+    </entity>
+
+    <entity name="SampleAmazonPaymentConfigSpc" type="amazon_payment_config">
+        <requiredEntity type="api_version">SampleAmazonPaymentApiVersion</requiredEntity>
+        <requiredEntity type="active">SampleAmazonPaymentActive</requiredEntity>
+        <requiredEntity type="private_key_text">SampleAmazonPaymentPrivateKey</requiredEntity>
+        <requiredEntity type="private_key_selected">SampleAmazonPaymentPrivateKeySelectedText</requiredEntity>
+        <requiredEntity type="public_key_id">SampleAmazonPaymentPublicKeyId</requiredEntity>
+        <requiredEntity type="merchant_id">SampleAmazonPaymentMerchantId</requiredEntity>
+        <requiredEntity type="store_id">SampleAmazonPaymentStoreId</requiredEntity>
+        <requiredEntity type="payment_region">SampleAmazonPaymentPaymentRegion</requiredEntity>
+        <requiredEntity type="sandbox">SampleAmazonPaymentSandbox</requiredEntity>
+        <requiredEntity type="spc_enabled">SampleAmazonPaymentSpcEnabled</requiredEntity>
     </entity>
 </entities>

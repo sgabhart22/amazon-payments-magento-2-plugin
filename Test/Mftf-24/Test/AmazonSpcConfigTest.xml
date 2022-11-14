@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="AmazonSpcConfiguration">
+        <annotations>
+            <stories value="Amazon Test SPC Configuration"/>
+            <title value="Amazon Test SPC Configuration"/>
+            <description value="Amazon SPC Config Should Enable SPC"/>
+            <severity value="CRITICAL"/>
+            <group value="amazon_pay"/>
+            <group value="amazon_pay_spc"/>
+        </annotations>
+
+        <before>
+            <createData entity="SimpleTwo" stepKey="createSimpleProduct"/>
+            <createData entity="SampleAmazonPaymentConfigSpc" stepKey="SampleAmazonPaymentConfigSpcData"/>
+            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+        </before>
+
+        <!--Go to product page-->
+        <actionGroup ref="StorefrontOpenProductPageActionGroup" stepKey="openProductStoreFront">
+            <argument name="productUrl" value="$$createSimpleProduct.custom_attributes[url_key]$$"/>
+        </actionGroup>
+
+        <seeInCurrentUrl url="product" stepKey="checkCategoryInPage"/>
+    </test>
+</tests>
