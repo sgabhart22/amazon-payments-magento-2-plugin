@@ -26,7 +26,7 @@
         <click selector="{{AmazonPageSection.spcContinueButton}}" stepKey="clickAmazonContinueButton"/>
 
         <!-- Wait for SPC page to load and place order -->
-        <waitForElement selector="{{AmazonPageSection.spcPlaceOrderButton}}" stepKey="waitForPlaceOrderButton"/>
+        <waitForElement selector="{{AmazonPageSection.spcLineItems}}" stepKey="waitForSpcDetailsToLoad"/>
         <click selector="{{AmazonPageSection.spcPlaceOrderButton}}" stepKey="clickPlaceOrderButton"/>
     </actionGroup>
 </actionGroups>
