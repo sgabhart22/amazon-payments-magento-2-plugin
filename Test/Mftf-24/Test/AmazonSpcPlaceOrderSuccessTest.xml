@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="AmazonSpcPlaceOrderSuccess">
+        <annotations>
+            <stories value="Amazon Pay Checkout With SPC"/>
+            <title value="Customer successfully places order with SPC"/>
+            <description value="Customer successfully places order with SPC"/>
+            <severity value="CRITICAL"/>
+            <group value="amazon_pay"/>
+            <group value="amazon_pay_spc"/>
+        </annotations>
+
+        <before>
+            <createData entity="SampleAmazonPaymentConfigSpc" stepKey="SampleAmazonPaymentConfigSpcData"/>
+            <createData entity="SimpleTwo" stepKey="createSimpleProduct"/>
+            <magentoCLI command="config:set payment/amazon_payment/authorization_mode {{SampleAmazonPaymentAuthorizationMode.automatic}}" stepKey="AuthorizationModeAutomatic"/>
+            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+        </before>
+
+        <after>
+            <createData entity="SampleAmazonPaymentConfig" stepKey="SampleAmazonPaymentConfigData"/>
+            <magentoCLI command="config:set payment/amazon_payment/authorization_mode {{SampleAmazonPaymentAuthorizationMode.immediate}}" stepKey="AuthorizationModeImmediate"/>
+            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+        </after>
+
+        <!--Go to product page-->
+        <actionGroup ref="StorefrontOpenProductPageActionGroup" stepKey="openProductStoreFront">
+            <argument name="productUrl" value="$$createSimpleProduct.custom_attributes[url_key]$$"/>
+        </actionGroup>
+
+        <!--Click on Add To Cart button-->
+        <actionGroup ref="StorefrontAddToTheCartActionGroup" stepKey="clickOnAddToCartButton"/>
+
+        <!--Go to checkout-->
+        <actionGroup ref="GoToCheckoutFromMinicartActionGroup" stepKey="goToCheckoutFromMiniCart"/>
+
+        <!-- Save opener name since popup auto closes -->
+        <executeJS function="return window.name;" stepKey="openerName"/>
+
+        <!--Go to Amazon Pay and login-->
+        <actionGroup ref="AmazonSpcLoginAndCheckoutActionGroup" stepKey="AmazonLoginAndCheckoutActionGroup"/>
+
+        <!-- Switch back to main wondow -->
+        <switchToWindow userInput="{$openerName}" stepKey="switchToWindowOpener" />
+
+        <!-- Verify order placed successfully -->
+        <waitForPageLoad stepKey="checkoutSuccessLoad" />
+        <waitForElementVisible selector="{{CheckoutSuccessMainSection.successTitle}}" stepKey="waitForProcess" />
+        <seeInCurrentUrl url="/checkout/onepage/success" stepKey="verifySuccess" />
+        <see selector="{{CheckoutSuccessMainSection.success}}" userInput="{{CONST.successGuestCheckoutOrderNumberMessage}}" stepKey="seeOrderNumber"/>
+        <see selector="{{CheckoutSuccessMainSection.success}}" userInput="{{CONST.successCheckoutEmailYouMessage}}" stepKey="seeEmailYou"/>
+    </test>
+</tests>

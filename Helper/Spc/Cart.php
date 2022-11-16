@@ -166,7 +166,7 @@ class Cart
         $coupons = $this->getCoupons($quote);
 
         // Create response object
-        /** @var $cartDetails CartDetailsInterface */
+        /** @var CartDetailsInterface $cartDetails */
         $cartDetails = $this->cartDetailsFactory->create();
         $cartDetails->setCartId($quote->getId())
             ->setLineItems($lineItems)

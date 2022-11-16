@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:mftf:Page/etc/SectionObject.xsd">
+    <section name="AmazonConfigSection">
+        <element name="configureButton" type="button" selector="#payment_us_amazon_pay-head"/>
+        <element name="optionsToggle" type="button" selector="#payment_us_amazon_pay_options-head"/>
+        <element name="syncTokensButton" type="button" selector="#sync_tokens"/>
+    </section>
+</sections>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="AmazonSpcGenerateAndSyncTokens">
+        <annotations>
+            <stories value="Amazon Pay Generate SPC Tokens"/>
+            <title value="Admin user must be able to create and sync tokens for SPC integration"/>
+            <description value="Admin user must be able to create and sync tokens for SPC integration"/>
+            <severity value="CRITICAL"/>
+            <group value="amazon_pay"/>
+            <group value="amazon_pay_spc"/>
+        </annotations>
+
+        <!-- Login as admin -->
+        <actionGroup ref="AdminLoginActionGroup" stepKey="loginAsAdmin"/>
+
+        <!-- Open payment config page -->
+        <amOnPage url="{{AdminPaymentConfigPage.url}}" stepKey="goToPaymentConfig"/>
+        <waitForPageLoad stepKey="waitForPaymentConfigPageLoad"/>
+
+        <!-- Open Amazon config and options section -->
+        <scrollTo selector="{{AmazonConfigSection.configureButton}}" stepKey="scrollAmazonPayConfigIntoView"/>
+        <click selector="{{AmazonConfigSection.configureButton}}" stepKey="openAmazonPayConfig"/>
+        <click selector="{{AmazonConfigSection.optionsToggle}}" stepKey="openAmazonPayOptions"/>
+
+        <!-- Generate and sync new tokens for merchant stores -->
+        <click selector="{{AmazonConfigSection.syncTokensButton}}" stepKey="clickGenerateAndSync"/>
+        <waitForPageLoad stepKey="waitForPaymentConfigPageLoad2"/>
+        <see userInput="Single Page Checkout tokens synced successfully." stepKey="seeMessage"/>
+    </test>
+</tests>

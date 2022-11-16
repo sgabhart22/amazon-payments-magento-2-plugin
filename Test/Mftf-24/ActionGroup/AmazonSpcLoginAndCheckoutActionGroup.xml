@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <!--Open login popup and complete form-->
+    <actionGroup name="AmazonSpcLoginAndCheckoutActionGroup">
+        <!--Go to Amazon Pay from the checkout and login-->
+        <waitForElement selector="{{buttonSelector}}" time="30" stepKey="apWaitForButton"/>
+        <wait time="1" stepKey="allowButtonToActivate"/>
+        <click selector="{{buttonSelector}}" stepKey="clickAmazonButton"/>
+
+        <wait time="1" stepKey="allowPopupToOpen"/>
+        <switchToNextTab stepKey="switchToLoginPopupWindow"/>
+
+        <!-- Fill in login form -->
+        <waitForElement selector="{{AmazonPageSection.emailField}}" time="30" stepKey="apWaitForLogin"/>
+        <fillField selector="{{AmazonPageSection.emailField}}" userInput="{{AmazonAccount.email}}" stepKey="apEnterEmail"/>
+        <fillField selector="{{AmazonPageSection.passwordField}}" userInput="{{AmazonAccount.password}}" stepKey="apEnterPassword"/>
+        <click selector="{{AmazonPageSection.signInButton}}" stepKey="clickSigninButton"/>
+
+        <!--Continue to SPC checkout page-->
+        <waitForElement selector="{{AmazonPageSection.spcContinueButton}}" stepKey="waitForAmazonCheckoutButton"/>
+        <wait time="1" stepKey="allowContinueButtonToActivate"/>
+        <click selector="{{AmazonPageSection.spcContinueButton}}" stepKey="clickAmazonContinueButton"/>
+
+        <!-- Wait for SPC page to load and place order -->
+        <waitForElement selector="{{AmazonPageSection.spcPlaceOrderButton}}" stepKey="waitForPlaceOrderButton"/>
+        <click selector="{{AmazonPageSection.spcPlaceOrderButton}}" stepKey="clickPlaceOrderButton"/>
+    </actionGroup>
+</actionGroups>
