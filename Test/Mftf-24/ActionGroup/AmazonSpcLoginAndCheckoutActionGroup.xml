@@ -2,6 +2,10 @@
 <actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
     <!--Open login popup and complete form-->
     <actionGroup name="AmazonSpcLoginAndCheckoutActionGroup">
+        <arguments>
+            <argument name="buttonSelector" defaultValue="{{AmazonButtonSection.checkout}}" type="string"/>
+        </arguments>
+        
         <!--Go to Amazon Pay from the checkout and login-->
         <waitForElement selector="{{buttonSelector}}" time="30" stepKey="apWaitForButton"/>
         <wait time="1" stepKey="allowButtonToActivate"/>

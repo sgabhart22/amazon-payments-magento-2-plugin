@@ -38,7 +38,7 @@
         <executeJS function="return window.name;" stepKey="openerName"/>
 
         <!--Go to Amazon Pay and login-->
-        <actionGroup ref="AmazonSpcLoginAndCheckoutActionGroup" stepKey="AmazonLoginAndCheckoutActionGroup"/>
+        <actionGroup ref="AmazonSpcLoginAndCheckoutActionGroup" stepKey="AmazonSpcLoginAndCheckoutActionGroup"/>
 
         <!-- Switch back to main wondow -->
         <switchToWindow userInput="{$openerName}" stepKey="switchToWindowOpener" />
