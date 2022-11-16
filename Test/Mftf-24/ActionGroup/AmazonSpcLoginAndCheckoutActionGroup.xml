@@ -7,8 +7,7 @@
         </arguments>
         
         <!--Go to Amazon Pay from the checkout and login-->
-        <waitForElement selector="{{buttonSelector}}" time="30" stepKey="apWaitForButton"/>
-        <wait time="1" stepKey="allowButtonToActivate"/>
+        <wait time="3" stepKey="allowButtonToActivate"/>
         <click selector="{{buttonSelector}}" stepKey="clickAmazonButton"/>
 
         <wait time="1" stepKey="allowPopupToOpen"/>
@@ -26,7 +25,7 @@
         <click selector="{{AmazonPageSection.spcContinueButton}}" stepKey="clickAmazonContinueButton"/>
 
         <!-- Wait for SPC page to load and place order -->
-        <waitForElement selector="{{AmazonPageSection.spcLineItems}}" stepKey="waitForSpcDetailsToLoad"/>
+        <waitForElement selector="{{AmazonPageSection.spcPlaceOrderButtonDisabled}}" stepKey="waitForSpcDetailsToLoad"/>
         <click selector="{{AmazonPageSection.spcPlaceOrderButton}}" stepKey="clickPlaceOrderButton"/>
     </actionGroup>
 </actionGroups>
