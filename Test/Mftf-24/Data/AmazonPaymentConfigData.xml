@@ -50,6 +50,7 @@
         <requiredEntity type="payment_region">SampleAmazonPaymentPaymentRegion</requiredEntity>
         <requiredEntity type="sandbox">SampleAmazonPaymentSandbox</requiredEntity>
         <requiredEntity type="lwa_enabled">SampleAmazonPaymentLwaDisabled</requiredEntity>
+        <requiredEntity type="spc_enabled">SampleAmazonPaymentSpcDisabled</requiredEntity>
     </entity>
     <entity name="SampleAmazonPaymentApiVersion" type="api_version">
         <data key="value">2</data>

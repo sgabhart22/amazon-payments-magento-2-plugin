@@ -15,8 +15,7 @@ class WaitForSpcLoad extends Helper
 
         try {
             $magentoWebDriver->executeInSelenium(function (RemoteWebDriver $webDriver) use ($buttonSelector, $magentoWebDriver) {
-                $magentoWebDriver->waitForElement('#spc-process-order-button-enabled input[type=submit]');
-                $magentoWebDriver->waitForJS("return $('{$buttonSelector}').is(':empty')", 30);
+                $magentoWebDriver->waitForJS("return $('{$buttonSelector}')", 30);
             });
         } catch (\Exception $e) {
             // Avoid out of memory error sometimes caused by print_r
