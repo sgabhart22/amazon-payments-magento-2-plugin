@@ -7,7 +7,7 @@
         <element name="checkoutButton" type="button" selector="#default-button-content input[type=submit]"/>
         <element name="continueButton" type="button" selector="#maxo_buy_now input[type=submit]"/>
         <element name="spcContinueButton" type="button" selector="#maxo_consent input[type=submit]"/>
-        <element name="spcPlaceOrderButtonDisabled" type="button" selector="#spc-process-order-button-disabled.hide"/>
+        <element name="spcPlaceOrderButtonEnabled" type="button" selector="#spc-process-order-button-disabled.hide"/>
         <element name="spcPlaceOrderButton" type="button" selector="#spc-process-order-button-enabled input[type=submit]"/>
         <element name="cancelButton" type="button" selector="#return_back_to_merchant_link"/>
         <element name="loginCancelButton" type="button" selector="#consent-wrapper-content [data-action='cancel-consent'] a"/>

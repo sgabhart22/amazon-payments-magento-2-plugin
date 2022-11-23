@@ -25,7 +25,11 @@
         <click selector="{{AmazonPageSection.spcContinueButton}}" stepKey="clickAmazonContinueButton"/>
 
         <!-- Wait for SPC page to load and place order -->
-        <waitForElement selector="{{AmazonPageSection.spcPlaceOrderButtonDisabled}}" stepKey="waitForSpcDetailsToLoad"/>
+        <!-- May need to add a JS function here to look for the disabled/enabled classes on the buttons, waiting for elements doesn't seem to be working too well -->
+        <helper class="Amazon\Pay\Test\Mftf\Helper\WaitForSpcLoad" method="waitForSpcLoad" stepKey="allowSpcPageToLoad">
+            <argument name="buttonSelector">{{AmazonPageSection.spcPlaceOrderButtonEnabled}}</argument>
+        </helper>
+        <!-- <waitForElement selector="{{AmazonPageSection.spcPlaceOrderButtonEnabled}}" stepKey="waitForSpcDetailsToLoad"/> -->
         <click selector="{{AmazonPageSection.spcPlaceOrderButton}}" stepKey="clickPlaceOrderButton"/>
     </actionGroup>
 </actionGroups>
